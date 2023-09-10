@@ -58,12 +58,17 @@ export default function Budget({ budget, days }: BudgetProps) {
         value={selectedOption}
         onChange={handleOptionChange}
       >
-        {/* Add your options here */}
+        <option value="25-25-25-25 Balance">25-25-25-25 Balance</option>
+        <option value="30-30-30-10 Balance Less Snack">30-30-30-10 Balance Less Snack</option>
+        <option value="15-35-35-15 Lunch & Dinner Focus">15-35-35-15 Lunch & Dinner Focus</option>
+        <option value="20-30-40-10 Dinner Focus">20-30-40-10 Dinner Focus</option>
+        <option value="20-40-30-10 Lunch Focus">20-40-30-10 Lunch Focus</option>
+        <option value="20-40-40-0 Lunch & Dinner Focus w/ No Snack">20-40-40-0 Lunch & Dinner Focus w/ No Snack</option>
       </select>
       <p>Percentage Distribution (Breakfast, Lunch, Dinner, Snack)</p>
       <p>Budget Distribution:</p>
       <p>{selectedOption}</p>
-      <p>Breakfast: ₱{breakfast.toFixed(2)}</p>
+      <p>Breakfast: ₱{isNaN(breakfast) ? '0' : breakfast.toFixed(2)}</p>
       <p>Lunch: ₱</p>
       <p>Dinner: ₱</p>
       <p>Snack: ₱</p>
