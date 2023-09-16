@@ -28,28 +28,32 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center p-2 sm:p-24 md:max-w-700">
       <div className="flex flex-col">
-        <h1 className="text-2xl">Meals Budget Planner App</h1>
-        <span className="text-white">Budget amount: </span>
+        <h1 className="text-2xl text-center mb-5">Daily Meals Budget Planner</h1>
+        <div className="flex flex-col gap-2">
+          <div className="mb-"> <span className="text-white">Budget amount: </span>
         <input
           type="number"
           className="text-gray-700 px-2"
           value={budgetValue === '' ? '' : budgetValue.toString()}
           onChange={handleBudgetChange}
-        />
-        <span className="text-white">Number of Days: </span>
+        /></div>
+          <div><span className="text-white">Number of Days: </span>
         <input
           type="number"
           className="text-gray-700 px-2"
           value={daysValue === '' ? '' : daysValue.toString()}
           onChange={handleDaysChange}
-        />
+        /></div>
+        </div>
+       
+        
       {typeof budgetValue === 'number' && typeof daysValue === 'number' && (
         <Budget budget={budgetValue} days={daysValue} />
       )}
       </div>
-
+        <button className="border border-yellow-500 rounded text-yellow-500 py-3 px-5 hover:bg-slate-100 hover:text-black m-10">Find recipes for this budget</button>
     </main>
   );
 }
