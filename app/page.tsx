@@ -28,6 +28,10 @@ export default function Home() {
     }
   };
 
+  const handleInputFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    event.target.select(); // Select all text in the input field when it gains focus
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-5 w-full md:max-w-700 text-yellow-100">
       <div className="flex flex-col">
@@ -42,7 +46,7 @@ export default function Home() {
           type="number"
           className="text-gray-700 p-2 w-full md:w-auto mx-auto md:mx-0 rounded-xl text-center"
           value={budgetValue === '' ? '' : budgetValue.toString()}
-          onChange={handleBudgetChange}
+          onChange={handleBudgetChange} onFocus={handleInputFocus}
         />
       </div>
       <div className="text-center p-3">
@@ -51,7 +55,7 @@ export default function Home() {
           type="number"
           className="text-gray-700 p-2 w-full md:w-auto mx-auto md:mx-0 rounded-xl text-center"
           value={daysValue === '' ? '' : daysValue.toString()}
-          onChange={handleDaysChange}
+          onChange={handleDaysChange} onFocus={handleInputFocus}
         />
       </div>
 </div>

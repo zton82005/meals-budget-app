@@ -138,12 +138,12 @@ export default function Budget({ budget, days }: BudgetProps) {
   return (
     <div className="flex flex-col mt-4 w-full">
       <p className="mb-2 text-center">Your budget for {days} days is ₱{budget}</p>
-      <div className="border rounded-full border-white text-center mb-4 w-full m-auto p-5">
+      <div className="border rounded-full border-white text-center mb-4 w-full m-auto p-5 hover:bg-gray-900">
         <p className="mb-2 text-center">Daily budget is </p>
         <span className="text-yellow-500 text-4xl font-bold text-center mb-4">₱{days===0 ? '0' : dailyBudget.toFixed(2)}</span>
       </div>
 
-      <label htmlFor="budgetType" className="text-center mb-2">Select your budget distribution:</label>
+      <label htmlFor="budgetType" className="text-center mb-2">Set your daily budget distribution:</label>
       <select
   className="text-gray-700 mb-2 w-full md:max-w-md lg:max-w-lg xl:max-w-xl p-2 rounded-xl text-center"
   id="budgetType"
