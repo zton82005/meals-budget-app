@@ -132,7 +132,7 @@ export default function Budget({ budget, days }: BudgetProps) {
 
       <label htmlFor="budgetType" className="text-center mb-2">Select your budget distribution:</label>
       <select
-  className="text-gray-700 mb-2 w-full md:max-w-md lg:max-w-lg xl:max-w-xl p-2"
+  className="text-gray-700 mb-2 w-full md:max-w-md lg:max-w-lg xl:max-w-xl p-2 rounded-xl text-center"
   id="budgetType"
   value={selectedOption}
   onChange={handleOptionChange}

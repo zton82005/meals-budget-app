@@ -40,7 +40,7 @@ export default function Home() {
         <span className="text-white block">Budget amount:</span>
         <input
           type="number"
-          className="text-gray-700 p-2 w-full md:w-auto mx-auto md:mx-0"
+          className="text-gray-700 p-2 w-full md:w-auto mx-auto md:mx-0 rounded-xl text-center"
           value={budgetValue === '' ? '' : budgetValue.toString()}
           onChange={handleBudgetChange}
         />
@@ -49,7 +49,7 @@ export default function Home() {
         <span className="text-white block">Number of Days:</span>
         <input
           type="number"
-          className="text-gray-700 p-2 w-full md:w-auto mx-auto md:mx-0"
+          className="text-gray-700 p-2 w-full md:w-auto mx-auto md:mx-0 rounded-xl text-center"
           value={daysValue === '' ? '' : daysValue.toString()}
           onChange={handleDaysChange}
         />
