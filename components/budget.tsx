@@ -122,12 +122,25 @@ export default function Budget({ budget, days }: BudgetProps) {
     setSnack(newSnack);
   }, [selectedOption, dailyBudget]);
 
+  const numericValues = selectedOption.split('-').map(Number).filter((value) => !isNaN(value));
+    const percentageDistribution = numericValues.map((value, index) => (isNaN(value) ? 0 : value));
+
+    // Add a fallback value of 0 for any non-numeric portion
+    const totalPercentage = percentageDistribution.reduce((acc, val) => acc + val, 0);
+    
+    if (totalPercentage <= 100) {
+      const remainingPercentage = 100 - totalPercentage;
+      percentageDistribution[3] = remainingPercentage;
+    }
+
+  
+
   return (
     <div className="flex flex-col mt-4 w-full">
-      <p className="mb-2 text-center mb-2">Your budget for {days} days is ₱{budget}</p>
+      <p className="mb-2 text-center">Your budget for {days} days is ₱{budget}</p>
       <div className="border rounded-full border-white text-center mb-4 w-full m-auto p-5">
         <p className="mb-2 text-center">Daily budget is </p>
-        <span className="text-yellow-500 text-4xl font-bold text-center mb-4">₱{isNaN(dailyBudget) ? '0' : dailyBudget.toFixed(2)}</span>
+        <span className="text-yellow-500 text-4xl font-bold text-center mb-4">₱{days===0 ? '0' : dailyBudget.toFixed(2)}</span>
       </div>
 
       <label htmlFor="budgetType" className="text-center mb-2">Select your budget distribution:</label>
@@ -138,37 +151,46 @@ export default function Budget({ budget, days }: BudgetProps) {
   onChange={handleOptionChange}
 >
   <option value="25-25-25-25 Balance">25-25-25-25 Balance</option>
-  <option value="30-30-30-10 Balance Less Snack">30-30-30-10 Balance Less Snack</option>
-  <option value="15-35-35-15 Lunch & Dinner Focus">15-35-35-15 Lunch & Dinner Focus</option>
-  <option value="20-30-40-10 Dinner Focus">20-30-40-10 Dinner Focus</option>
-  <option value="20-40-30-10 Lunch Focus">20-40-30-10 Lunch Focus</option>
-  <option value="20-40-40-0 Lunch & Dinner Focus w/ No Snack">20-40-40-0 Lunch & Dinner Focus, No Snack</option>
+  <option value="30-30-30-10 Balance Less Snack">30-30-30-10- Balance Less Snack</option>
+  <option value="15-35-35-15 Lunch & Dinner Focus">15-35-35-15- Lunch & Dinner Focus</option>
+  <option value="20-30-40-10 Dinner Focus">20-30-40-10- Dinner Focus</option>
+  <option value="20-40-30-10 Lunch Focus">20-40-30-10- Lunch Focus</option>
+  <option value="20-40-40-0 Lunch & Dinner Focus w/ No Snack">20-40-40-0- Lunch & Dinner Focus, No Snack</option>
 </select>
 
-      <p className="text-center mb-2">Percentage Distribution:</p>
-      <p className="mb-4 text-center">
-  <span className="inline-block rounded-full px-4 border border-blue-500 px-2 py-1 mr-2 text-blue-500 hover:bg-white  transition duration-500 ease-in-out">
-    Breakfast
-  </span>
-  <span className="inline-block rounded-full px-4 border border-green-500 px-2 py-1 mr-2 text-green-500 hover:bg-white  transition duration-500 ease-in-out">
-    Lunch
-  </span>
-  <span className="inline-block rounded-full px-4 border border-red-500 px-2 py-1 mr-2 text-red-500 hover:bg-white  transition duration-500 ease-in-out">
-    Dinner
-  </span>
-  <span className="inline-block rounded-full px-4 border border-purple-500 px-2 py-1 text-purple-500 hover:bg-white  transition duration-500 ease-in-out">
-    Snack
-  </span>
-</p>
+      <p className="text-center mb-2 my-4">Percentage Distribution:</p>
+      <div className="mb-4 text-center flex gap-0">
+        <div className="border py-3 bg-blue-500 hover:bg-blue-500 hover:bg-opacity-50 transition duration-300 ease-in-out" style={{ flex: `${percentageDistribution[0]} 0 0` }}>
+          
+        </div>
+        <div className="border py-1 bg-green-500 hover:bg-green-500 hover:bg-opacity-50 transition duration-300 ease-in-out" style={{ flex: `${percentageDistribution[1]} 0 0` }}>
+          
+        </div>
+        <div className="border py-1 bg-red-500 hover:bg-red-500 hover:bg-opacity-50 transition duration-300 ease-in-out" style={{ flex: `${percentageDistribution[2]} 0 0` }}>
+          
+        </div>
+        <div className="border py-1 bg-purple-500 hover:bg-purple-500 hover:bg-opacity-50 transition duration-300 ease-in-out" style={{ flex: `${percentageDistribution[3]} 0 0` }}>
+          
+        </div>
+      </div>
+    <div className="flex flex-col md:flex-row mb-5 justify-around gap-2">
+      <div className="flex flex-col text-blue-500 text-center">
+      <p className="text-center">Breakfast:</p> <span className="font-bold text-xl text-center">₱{days===0 ? '0' : breakfast.toFixed(2)}</span>
+      </div>
+      <div className="flex flex-col text-green-500">
+      <p className="text-center">Lunch: </p><span className="font-bold text-xl text-center">₱{days===0 ? '0' : lunch.toFixed(2)}</span>
+      </div>
+      <div className="flex flex-col text-red-500">
+      <p className="text-center">Dinner: </p><span className="font-bold text-xl text-center">₱{days===0 ? '0' : dinner.toFixed(2)}</span>
+      </div>
+      <div className="flex flex-col text-purple-500">
+      <p className="text-center">Snack: </p><span className="font-bold text-xl text-center">₱{days===0 ? '0' : snack.toFixed(2)}</span>
+      </div>
+    </div>
 
-
-      <p className="mb-2 text-center">Budget Distribution: {selectedOption}</p>
-      
-      <p className="text-center">Breakfast: <span className="text-yellow-500">₱{isNaN(breakfast) ? '0' : breakfast.toFixed(2)}</span></p>
-      <p className="text-center">Lunch: <span className="text-yellow-500">₱{isNaN(lunch) ? '0' : lunch.toFixed(2)}</span></p>
-      <p className="text-center">Dinner: <span className="text-yellow-500">₱{isNaN(dinner) ? '0' : dinner.toFixed(2)}</span></p>
-      <p className="text-center">Snack: <span className="text-yellow-500">₱{isNaN(snack) ? '0' : snack.toFixed(2)}</span></p>
+      <p className="mb-2 text-center">Budget Distribution: <span className="font-bold">{selectedOption}</span></p>
     </div>
   );
+  
 }
 

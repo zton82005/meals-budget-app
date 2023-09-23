@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-5 w-full md:max-w-700">
+    <main className="flex min-h-screen flex-col items-center justify-center p-5 w-full md:max-w-700 text-yellow-100">
       <div className="flex flex-col">
         <div className="flex justify-center items-center">
         <Image className="mb-5" src="/logo.png" width={80} height={80} priority alt="App logo" />
