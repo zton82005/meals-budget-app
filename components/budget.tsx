@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
+import Image from "next/image";
 
 interface BudgetProps {
   budget: number;
@@ -139,7 +140,7 @@ export default function Budget({ budget, days }: BudgetProps) {
     <div className="flex flex-col mt-4 w-full">
       <p className="mb-2 text-center">Your budget for {days} days is ₱{budget}</p>
       <div className="border rounded-full border-white text-center mb-4 w-full m-auto p-5 hover:bg-gray-900">
-        <p className="mb-2 text-center">Daily budget is </p>
+        <p className="mb-2 text-center">Daily budget: </p>
         <span className="text-yellow-500 text-4xl font-bold text-center mb-4">₱{days===0 ? '0' : dailyBudget.toFixed(2)}</span>
       </div>
 
@@ -173,20 +174,31 @@ export default function Budget({ budget, days }: BudgetProps) {
           
         </div>
       </div>
-    <div className="flex flex-col md:flex-row mb-5 justify-around gap-2">
-      <div className="flex flex-col text-blue-500 text-center">
-      <p className="text-center">Breakfast:</p> <span className="font-bold text-xl text-center">₱{days===0 ? '0' : breakfast.toFixed(2)}</span>
+    
+      <div className="flex justify-evenly gap-3 my-3">
+        <div className="flex flex-col text-blue-100 text-center w-full p-5 bg-blue-500 rounded-lg hover:bg-blue-600 items-center justify-center">
+        <Image className="mb-5" src="/bf.png" width={50} height={50} priority alt="Breakfast" />
+        <p className="text-center">Breakfast:</p> <span className="font-bold text-xl text-center">₱{days===0 ? '0' : breakfast.toFixed(2)}</span>
+        </div>
+        <div className="flex flex-col text-green-100 text-center w-full p-5 bg-green-500 rounded-lg hover:bg-blue-600 items-center justify-center">
+        <Image className="mb-5" src="/lunch.png" width={50} height={50} priority alt="Lunch" />
+        <p className="text-center">Lunch: </p><span className="font-bold text-xl text-center">₱{days===0 ? '0' : lunch.toFixed(2)}</span>
+        </div>
       </div>
-      <div className="flex flex-col text-green-500">
-      <p className="text-center">Lunch: </p><span className="font-bold text-xl text-center">₱{days===0 ? '0' : lunch.toFixed(2)}</span>
+
+      <div className="flex justify-evenly gap-3 mb-3">
+        <div className="flex flex-col text-red-100 text-center w-full p-5 bg-red-500 rounded-lg hover:bg-red-600 items-center justify-center">
+        <Image className="mb-5" src="/dinner.png" width={50} height={50} priority alt="Dinner" />
+        <p className="text-center">Dinner: </p><span className="font-bold text-xl text-center">₱{days===0 ? '0' : dinner.toFixed(2)}</span>
+        </div>
+
+        <div className="flex flex-col text-purple-100 text-center w-full p-5 bg-purple-500 rounded-lg hover:bg-purple-600 items-center justify-center">
+        <Image className="mb-5" src="/snacks.png" width={50} height={50} priority alt="Snacks" />
+        <p className="text-center">Snack: </p><span className="font-bold text-xl text-center">₱{days===0 ? '0' : snack.toFixed(2)}</span>
+        </div>
       </div>
-      <div className="flex flex-col text-red-500">
-      <p className="text-center">Dinner: </p><span className="font-bold text-xl text-center">₱{days===0 ? '0' : dinner.toFixed(2)}</span>
-      </div>
-      <div className="flex flex-col text-purple-500">
-      <p className="text-center">Snack: </p><span className="font-bold text-xl text-center">₱{days===0 ? '0' : snack.toFixed(2)}</span>
-      </div>
-    </div>
+
+    
 
       <p className="mb-2 text-center">Budget Distribution: <span className="font-bold">{selectedOption}</span></p>
     </div>

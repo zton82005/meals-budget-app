@@ -36,7 +36,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-5 w-full md:max-w-700 text-yellow-100">
       <div className="flex flex-col">
         <div className="flex justify-center items-center">
-        <Image className="mb-5" src="/logo.png" width={80} height={80} priority alt="App logo" />
+        <Image className="mb-5" src="/meal.png" width={80} height={80} priority alt="App logo" />
         </div>
         <h1 className="text-2xl text-center mb-5">Daily Meals Budget Planner</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-4 items-center">
