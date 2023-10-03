@@ -180,7 +180,7 @@ export default function Budget({ budget, days }: BudgetProps) {
         <Image className="mb-5" src="/bf.png" width={50} height={50} priority alt="Breakfast" />
         <p className="text-center">Breakfast:</p> <span className="font-bold text-xl text-center">₱{days===0 ? '0' : breakfast.toFixed(2)}</span>
         </div>
-        <div className="flex flex-col text-green-100 text-center w-full p-5 bg-green-500 rounded-lg hover:bg-blue-600 items-center justify-center">
+        <div className="flex flex-col text-green-100 text-center w-full p-5 bg-green-500 rounded-lg hover:bg-green-600 items-center justify-center">
         <Image className="mb-5" src="/lunch.png" width={50} height={50} priority alt="Lunch" />
         <p className="text-center">Lunch: </p><span className="font-bold text-xl text-center">₱{days===0 ? '0' : lunch.toFixed(2)}</span>
         </div>
