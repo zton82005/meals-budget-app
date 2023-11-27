@@ -3,10 +3,13 @@
 import { useState } from 'react';
 import Image from "next/image";
 import Budget from "@/components/budget";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   const [budgetValue, setBudgetValue] = useState<number | ''>(0);
   const [daysValue, setDaysValue] = useState<number | ''>(0);
+  const notify = () => toast("Sorry for the inconvenience but the page is still not available at the moment.");
 
   // Function to update the budget value
   const handleBudgetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,7 +69,8 @@ export default function Home() {
         <Budget budget={budgetValue} days={daysValue} />
       )}
       </div>
-        <button className="border border-yellow-500 rounded-full text-yellow-500 py-3 px-5 hover:bg-slate-100 hover:text-black m-10">Find recipes for this budget</button>
+        <button className="border border-yellow-500 rounded-full text-yellow-500 py-3 px-5 hover:bg-slate-100 hover:text-black m-10" onClick={notify}>Find recipes for this budget</button>
+        <ToastContainer />
     </main>
   );
 }
